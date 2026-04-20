@@ -39,17 +39,13 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
+            transition: all 0.5s ease-in-out;
         }
 
         .loader-screen.hidden {
-            animation: fadeOutLoader 0.5s ease-in-out forwards;
-        }
-
-        @keyframes fadeOutLoader {
-            to {
-                opacity: 0;
-                pointer-events: none;
-            }
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
 
         .counter-display {
@@ -57,12 +53,6 @@
             font-weight: 900;
             color: #ffffff;
             letter-spacing: -2px;
-            animation: pulseCounter 0.3s ease-in-out;
-        }
-
-        @keyframes pulseCounter {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
         }
 
         .loader-text {
@@ -71,12 +61,6 @@
             letter-spacing: 2px;
             font-weight: 500;
             margin-top: 20px;
-            animation: pulse 1s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
         }
 
         /* Navigation */
@@ -86,7 +70,7 @@
             width: 100%;
             padding: 16px 32px;
             background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             justify-content: space-between;
@@ -116,27 +100,12 @@
             text-decoration: none;
             font-weight: 500;
             font-size: clamp(12px, 2vw, 14px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #ffffff;
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         nav a:hover {
             color: #ffffff;
-        }
-
-        nav a:hover::after {
-            width: 100%;
         }
 
         /* Main Container */
@@ -191,15 +160,15 @@
             color: #cccccc;
         }
 
-        /* Enhanced Glass Morphism Card */
+        /* Glass Morphism Card */
         .card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(30px) saturate(180%);
+            backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: clamp(20px, 4vw, 40px);
             margin-bottom: clamp(15px, 3vw, 30px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             position: relative;
             overflow: hidden;
@@ -210,134 +179,6 @@
             border-color: rgba(255, 255, 255, 0.15);
             transform: translateY(-8px);
             box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-animation-left {
-            animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            opacity: 0;
-        }
-
-        .card-animation-right {
-            animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            opacity: 0;
-        }
-
-        .card-animation-top {
-            animation: slideInTop 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            opacity: 0;
-        }
-
-        .card-animation-bottom {
-            animation: slideInBottom 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            opacity: 0;
-        }
-
-        .card-animation-zoom {
-            animation: zoomIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-            opacity: 0;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInTop {
-            from {
-                opacity: 0;
-                transform: translateY(-60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInBottom {
-            from {
-                opacity: 0;
-                transform: translateY(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes zoomIn {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* Hero Section */
-        .hero {
-            background: #000000;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.03), transparent);
-            border-radius: 50%;
-            top: -200px;
-            right: -200px;
-            animation: floatBg 8s ease-in-out infinite;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.02), transparent);
-            border-radius: 50%;
-            bottom: -150px;
-            left: -150px;
-            animation: floatBg 10s ease-in-out infinite reverse;
-        }
-
-        @keyframes floatBg {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(30px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero p {
-            font-size: clamp(0.95rem, 2.5vw, 1.2rem);
-            margin: clamp(15px, 3vw, 25px) 0;
-            line-height: 1.8;
         }
 
         /* Buttons */
@@ -351,7 +192,7 @@
             backdrop-filter: blur(20px);
             color: #ffffff;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin: clamp(8px, 1vw, 12px);
@@ -365,10 +206,6 @@
             box-shadow: 0 12px 24px rgba(255, 255, 255, 0.1);
         }
 
-        .btn:active {
-            transform: translateY(-1px);
-        }
-
         /* Investment Tiers Grid */
         .tiers-container {
             display: grid;
@@ -379,30 +216,15 @@
 
         .tier-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(30px) saturate(180%);
+            backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: clamp(25px, 4vw, 40px);
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .tier-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .tier-card:hover::before {
-            left: 100%;
         }
 
         .tier-card:hover {
@@ -472,11 +294,11 @@
 
         .level-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(30px) saturate(180%);
+            backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: clamp(20px, 3vw, 30px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             position: relative;
         }
@@ -530,12 +352,12 @@
 
         .income-item {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(30px) saturate(180%);
+            backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 16px;
             padding: clamp(20px, 3vw, 30px);
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
@@ -571,11 +393,11 @@
 
         .blockchain-card {
             background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(30px) saturate(180%);
+            backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
             padding: clamp(25px, 4vw, 40px);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s ease;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             position: relative;
         }
@@ -679,7 +501,7 @@
             color: #999999;
             font-size: clamp(0.9rem, 1.8vw, 1rem);
             backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
         }
 
         .promotion-path:hover {
@@ -690,7 +512,7 @@
         /* Footer */
         footer {
             background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px) saturate(180%);
+            backdrop-filter: blur(20px);
             border-top: 1px solid rgba(255, 255, 255, 0.08);
             padding: clamp(30px, 5vw, 50px) clamp(20px, 4vw, 40px);
             text-align: center;
@@ -725,6 +547,54 @@
 
         .developer-credit a:hover {
             color: #cccccc;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #000000;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.03), transparent);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+            animation: floatBg 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.02), transparent);
+            border-radius: 50%;
+            bottom: -150px;
+            left: -150px;
+            animation: floatBg 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatBg {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero p {
+            font-size: clamp(0.95rem, 2.5vw, 1.2rem);
+            margin: clamp(15px, 3vw, 25px) 0;
+            line-height: 1.8;
         }
 
         /* Responsive Design */
@@ -851,13 +721,6 @@
                 padding-top: 60px;
             }
         }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation: none !important;
-                transition: none !important;
-            }
-        }
     </style>
 </head>
 <body>
@@ -907,7 +770,7 @@
                 </p>
                 
                 <div class="tiers-container">
-                    <div class="tier-card card-animation-left">
+                    <div class="tier-card">
                         <div class="tier-icon">🟢</div>
                         <div class="tier-name">STARTER</div>
                         <div class="tier-amount">100 USDT</div>
@@ -924,7 +787,7 @@
                         </div>
                     </div>
 
-                    <div class="tier-card card-animation-right">
+                    <div class="tier-card">
                         <div class="tier-icon">🔵</div>
                         <div class="tier-name">SILVER</div>
                         <div class="tier-amount">300 USDT</div>
@@ -941,7 +804,7 @@
                         </div>
                     </div>
 
-                    <div class="tier-card card-animation-bottom">
+                    <div class="tier-card">
                         <div class="tier-icon">⭐</div>
                         <div class="tier-name">GOLD</div>
                         <div class="tier-amount">500 USDT</div>
@@ -958,7 +821,7 @@
                         </div>
                     </div>
 
-                    <div class="tier-card card-animation-top">
+                    <div class="tier-card">
                         <div class="tier-icon">🟣</div>
                         <div class="tier-name">PLATINUM</div>
                         <div class="tier-amount">800 USDT</div>
@@ -975,7 +838,7 @@
                         </div>
                     </div>
 
-                    <div class="tier-card card-animation-left">
+                    <div class="tier-card">
                         <div class="tier-icon">💎</div>
                         <div class="tier-name">DIAMOND</div>
                         <div class="tier-amount">1,000 USDT</div>
@@ -992,7 +855,7 @@
                         </div>
                     </div>
 
-                    <div class="tier-card card-animation-right">
+                    <div class="tier-card">
                         <div class="tier-icon">👑</div>
                         <div class="tier-name">ELITE</div>
                         <div class="tier-amount">1,000+ USDT</div>
@@ -1020,7 +883,7 @@
                     Build your network and earn passive income. Direct referrals earn 25 USDT plus commissions up to 10 levels deep
                 </p>
 
-                <div class="card card-animation-top">
+                <div class="card">
                     <h3 style="display: flex; align-items: center; gap: 12px;"><i class="fas fa-lightbulb"></i> How the Referral System Works</h3>
                     <p style="margin-top: 15px; line-height: 1.8; color: #cccccc;">
                         When you refer someone to StakingVault, you earn a <strong style="color: #ffffff;">direct bonus of 25 USDT</strong> for every successful referral. 
@@ -1029,7 +892,7 @@
                     </p>
                 </div>
 
-                <div class="card card-animation-bottom">
+                <div class="card">
                     <h3 style="display: flex; align-items: center; gap: 12px;"><i class="fas fa-chart-bar"></i> Referral Distribution Breakdown</h3>
                     <div class="table-container">
                         <table>
@@ -1085,7 +948,7 @@
 
                 <h3 style="text-align: center; margin-top: clamp(40px, 5vw, 60px); margin-bottom: clamp(25px, 4vw, 40px);">10-Level Earning Structure</h3>
                 <div class="levels-grid">
-                    <div class="level-card card-animation-left">
+                    <div class="level-card">
                         <div class="level-header">
                             <div class="level-icon"><i class="fas fa-layer-group"></i></div>
                             <div>
@@ -1099,7 +962,7 @@
                         </div>
                     </div>
 
-                    <div class="level-card card-animation-bottom">
+                    <div class="level-card">
                         <div class="level-header">
                             <div class="level-icon"><i class="fas fa-project-diagram"></i></div>
                             <div>
@@ -1113,7 +976,7 @@
                         </div>
                     </div>
 
-                    <div class="level-card card-animation-right">
+                    <div class="level-card">
                         <div class="level-header">
                             <div class="level-icon"><i class="fas fa-sitemap"></i></div>
                             <div>
@@ -1127,7 +990,7 @@
                         </div>
                     </div>
 
-                    <div class="level-card card-animation-top">
+                    <div class="level-card">
                         <div class="level-header">
                             <div class="level-icon"><i class="fas fa-network-wired"></i></div>
                             <div>
@@ -1142,7 +1005,7 @@
                     </div>
                 </div>
 
-                <div class="card card-animation-left" style="margin-top: clamp(35px, 5vw, 50px);">
+                <div class="card" style="margin-top: clamp(35px, 5vw, 50px);">
                     <h3 style="display: flex; align-items: center; gap: 12px;"><i class="fas fa-trophy"></i> Promoter Tiers & GOD TIER</h3>
                     <p style="color: #cccccc; margin-top: 15px;">
                         Unlock higher tier status and earn monthly bonuses based on successful referrals:
@@ -1199,7 +1062,7 @@
                     </div>
                 </div>
 
-                <div class="card card-animation-right" style="margin-top: clamp(25px, 3vw, 35px); background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.12);">
+                <div class="card" style="margin-top: clamp(25px, 3vw, 35px); background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.12);">
                     <h3 style="color: #ffffff; display: flex; align-items: center; gap: 12px;"><i class="fas fa-crown"></i> GOD TIER Exclusive Benefits</h3>
                     <ul class="features-list" style="margin-top: 20px;">
                         <li style="border-bottom: 1px solid rgba(255, 255, 255, 0.05);">Maximum monthly bonus (20 USDT) plus investment returns</li>
@@ -1225,32 +1088,32 @@
                 <h3 style="text-align: center; margin-bottom: clamp(20px, 3vw, 35px); color: #ffffff;"><i class="fas fa-chart-line"></i> Example: 500 USDT Investment</h3>
 
                 <div class="income-breakdown">
-                    <div class="income-item card-animation-left">
+                    <div class="income-item">
                         <div class="income-label"><i class="fas fa-percent"></i> Investment Return</div>
                         <div class="income-amount">90 USDT</div>
                         <div style="font-size: clamp(0.8rem, 1.5vw, 0.9rem); color: #666666; margin-top: 10px;">18% Monthly from staking</div>
                     </div>
 
-                    <div class="income-item card-animation-right">
+                    <div class="income-item">
                         <div class="income-label"><i class="fas fa-user-plus"></i> Direct Referral</div>
                         <div class="income-amount">25 USDT</div>
                         <div style="font-size: clamp(0.8rem, 1.5vw, 0.9rem); color: #666666; margin-top: 10px;">Per successful referral</div>
                     </div>
 
-                    <div class="income-item card-animation-bottom">
+                    <div class="income-item">
                         <div class="income-label"><i class="fas fa-medal"></i> Tier Bonus</div>
                         <div class="income-amount">5-20 USDT</div>
                         <div style="font-size: clamp(0.8rem, 1.5vw, 0.9rem); color: #666666; margin-top: 10px;">Based on referral level</div>
                     </div>
 
-                    <div class="income-item card-animation-top">
+                    <div class="income-item">
                         <div class="income-label"><i class="fas fa-network-wired"></i> Network Income</div>
                         <div class="income-amount">50-75 USDT</div>
                         <div style="font-size: clamp(0.8rem, 1.5vw, 0.9rem); color: #666666; margin-top: 10px;">From 10-level deep referrals</div>
                     </div>
                 </div>
 
-                <div class="card card-animation-zoom" style="margin-top: clamp(35px, 5vw, 50px);">
+                <div class="card" style="margin-top: clamp(35px, 5vw, 50px);">
                     <h3 style="display: flex; align-items: center; gap: 12px;"><i class="fas fa-calculator"></i> Monthly Income Calculation</h3>
                     <p style="color: #cccccc; margin: clamp(12px, 2vw, 18px) 0;">
                         <strong style="color: #ffffff;">Scenario:</strong> 500 USDT investment with 5 active referrals + 10 commissions from network
@@ -1301,7 +1164,7 @@
                     </div>
                 </div>
 
-                <div class="card card-animation-left" style="margin-top: clamp(25px, 3vw, 35px);">
+                <div class="card" style="margin-top: clamp(25px, 3vw, 35px);">
                     <h3 style="display: flex; align-items: center; gap: 12px;"><i class="fas fa-arrow-trend-up"></i> Earning Scale by Network</h3>
                     <p style="color: #cccccc; margin-top: 15px;">
                         Your income grows exponentially as you build your network and reach higher tier levels:
@@ -1369,7 +1232,7 @@
                 </p>
 
                 <div class="blockchain-grid">
-                    <div class="blockchain-card card-animation-left">
+                    <div class="blockchain-card">
                         <div class="blockchain-icon"><i class="fas fa-cube"></i></div>
                         <h3>Custom Blockchain</h3>
                         <p>
@@ -1384,7 +1247,7 @@
                         </ul>
                     </div>
 
-                    <div class="blockchain-card card-animation-right">
+                    <div class="blockchain-card">
                         <div class="blockchain-icon"><i class="fas fa-coins"></i></div>
                         <h3>SVT Native Token</h3>
                         <p>
@@ -1399,7 +1262,7 @@
                         </ul>
                     </div>
 
-                    <div class="blockchain-card card-animation-bottom">
+                    <div class="blockchain-card">
                         <div class="blockchain-icon"><i class="fas fa-rocket"></i></div>
                         <h3>LaunchPad Platform</h3>
                         <p>
@@ -1415,7 +1278,7 @@
                     </div>
                 </div>
 
-                <div class="card card-animation-top" style="margin-top: clamp(35px, 5vw, 50px);">
+                <div class="card" style="margin-top: clamp(35px, 5vw, 50px);">
                     <h3 style="display: flex; align-items: center; gap: 12px;"><i class="fas fa-link"></i> How Staking Works as Proof of Income</h3>
                     <p style="color: #cccccc; margin-top: 15px; line-height: 1.9;">
                         <strong style="color: #ffffff;"><i class="fas fa-arrow-right" style="color: #ffffff;"></i> Step 1:</strong> Deposit USDT to your wallet (automatically converted to SVT tokens) <br/>
@@ -1426,7 +1289,7 @@
                     </p>
                 </div>
 
-                <div class="card card-animation-left" style="margin-top: clamp(25px, 3vw, 35px); background: rgba(255, 255, 255, 0.08);">
+                <div class="card" style="margin-top: clamp(25px, 3vw, 35px); background: rgba(255, 255, 255, 0.08);">
                     <h3 style="display: flex; align-items: center; gap: 12px;"><i class="fas fa-shield-alt"></i> Smart Contract Security</h3>
                     <p style="color: #cccccc; margin-top: 15px;">
                         Our staking contracts have been audited by leading blockchain security firms. Multi-signature wallets 
@@ -1441,7 +1304,7 @@
                     </ul>
                 </div>
 
-                <div class="card card-animation-right" style="margin-top: clamp(25px, 3vw, 35px); background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.12);">
+                <div class="card" style="margin-top: clamp(25px, 3vw, 35px); background: rgba(255, 255, 255, 0.08); border-color: rgba(255, 255, 255, 0.12);">
                     <h3 style="color: #ffffff; display: flex; align-items: center; gap: 12px;"><i class="fas fa-file-contract"></i> Blockchain Proof Records</h3>
                     <p style="color: #cccccc; margin-top: 15px;">
                         Every staking activity generates immutable transaction records on our blockchain. You can verify:
@@ -1468,7 +1331,7 @@
 
                 <h3 style="text-align: center; margin-bottom: clamp(20px, 3vw, 35px);"><i class="fas fa-chart-candlestick"></i> Market Performance</h3>
 
-                <div class="table-container card-animation-top">
+                <div class="table-container">
                     <table>
                         <thead>
                             <tr>
@@ -1535,7 +1398,7 @@
 
                 <h3 style="text-align: center; margin-top: clamp(40px, 5vw, 60px); margin-bottom: clamp(20px, 3vw, 35px);"><i class="fas fa-wallet"></i> Your Portfolio</h3>
 
-                <div class="table-container card-animation-bottom">
+                <div class="table-container">
                     <table>
                         <thead>
                             <tr>
@@ -1614,11 +1477,10 @@
     </footer>
 
     <script>
-        // Fast Loading Counter (2 seconds)
+        // Loading Counter
         const loaderScreen = document.getElementById('loaderScreen');
         const counter = document.getElementById('counter');
         let count = 0;
-        const speed = 20; // Fast speed
 
         const interval = setInterval(() => {
             count++;
@@ -1626,15 +1488,11 @@
 
             if (count >= 100) {
                 clearInterval(interval);
-                // Hide loader after animation completes
                 setTimeout(() => {
                     loaderScreen.classList.add('hidden');
-                    loaderScreen.style.display = 'none';
-                    // Trigger scroll animations
-                    triggerScrollAnimations();
-                }, 500);
+                }, 300);
             }
-        }, speed);
+        }, 15);
 
         // Smooth Scroll Navigation
         function scrollTo(event) {
@@ -1647,39 +1505,7 @@
             }
         }
 
-        // Scroll-triggered card animations
-        function triggerScrollAnimations() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, index) => {
-                    if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
-                        entry.target.classList.add('animated');
-                        
-                        // Stagger animations
-                        const animations = ['card-animation-left', 'card-animation-right', 'card-animation-top', 'card-animation-bottom', 'card-animation-zoom'];
-                        const animationClass = animations[index % animations.length];
-                        
-                        if (entry.target.classList.contains('tier-card') || 
-                            entry.target.classList.contains('level-card') || 
-                            entry.target.classList.contains('income-item') || 
-                            entry.target.classList.contains('blockchain-card')) {
-                            entry.target.style.animationDelay = (index % 3) * 0.1 + 's';
-                        }
-                    }
-                });
-            }, observerOptions);
-
-            // Observe all cards
-            document.querySelectorAll('.tier-card, .level-card, .income-item, .blockchain-card, .table-container, .card').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Mobile responsiveness check
+        // Mobile responsiveness
         if (window.innerWidth <= 768) {
             document.querySelectorAll('table').forEach(table => {
                 table.style.fontSize = 'clamp(0.7rem, 1.2vw, 0.85rem)';
